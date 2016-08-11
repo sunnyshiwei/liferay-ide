@@ -50,7 +50,7 @@ public class BaseTests
     protected static IWorkspace workspace()
     {
         return ResourcesPlugin.getWorkspace();
-    }
+    }qrwr
 
     protected static IWorkspaceRoot workspaceRoot()
     {
