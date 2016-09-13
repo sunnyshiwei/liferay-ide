@@ -123,7 +123,7 @@ public class LiferayHookModelTests extends ProjectCoreBase
 
                 return super.adapt( adapterType );
             }
-        };
+        };ttttttttttttttttttttttttt
 
         final Hook hook = Hook6xx.TYPE.instantiate( new RootXmlResource( store ) );
 
