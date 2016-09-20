@@ -15,6 +15,7 @@
 
 package com.liferay.ide.project.ui.upgrade.animated;
 
+import com.liferay.ide.core.util.CoreUtil;
 import com.liferay.ide.project.core.ProjectCore;
 import com.liferay.ide.ui.util.SWTUtil;
 
@@ -101,6 +102,7 @@ public class UpgradeView extends ViewPart implements SelectionChangedListener
         dataModel.getHasWeb().attach( new LiferayUpgradeStoreListener() );
         dataModel.getBundleName().attach( new LiferayUpgradeStoreListener() );
         dataModel.getBundleUrl().attach( new LiferayUpgradeStoreListener() );
+        dataModel.getLiferay62ServerLocation().attach( new LiferayUpgradeStoreListener() );
 
         final IPath stateLocation = ProjectCore.getDefault().getStateLocation();
 
@@ -324,6 +326,13 @@ public class UpgradeView extends ViewPart implements SelectionChangedListener
         currentPageList.add( welcomePage );
         currentPageList.add( initConfigureProjectPage );
         //currentPageList.addAll( staticPageList );
+
+        String liferay62ServerLocation = codeUpgradeProperties.getProperty( "Liferay62ServerLocation" );
+
+        if( !CoreUtil.isNullOrEmpty( liferay62ServerLocation ) )
+        {
+            dataModel.setLiferay62ServerLocation( liferay62ServerLocation );
+        }
 
         boolean hasPortlet = Boolean.parseBoolean( codeUpgradeProperties.getProperty( "HasPortlet", "false" ) );
         boolean hasServiceBuilder = Boolean.parseBoolean( codeUpgradeProperties.getProperty( "HasServiceBuilder", "false" ) );
